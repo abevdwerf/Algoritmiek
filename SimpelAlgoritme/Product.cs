@@ -11,7 +11,7 @@ namespace SimpelAlgoritme
         public string Name { get; private set; }
         public Double Price { get; private set; }
 
-        Product(string name, Double price)
+        public Product(string name, Double price)
         {
             this.Name = name;
             this.Price = price;
