@@ -15,7 +15,6 @@ namespace SimpelAlgoritme
 
         public List<Product> ProductList { get; set; }
         
-        //testen...
         public Double GiveMaximumPrice()
         {
             if (ProductList.Count == 0)
@@ -52,10 +51,25 @@ namespace SimpelAlgoritme
             return price;
         }
 
-        //public List<Product> GetAllProducts(Double minimumPrice)
-        //{
+        public List<Product> GetAllProducts(double minimumprice)
+        {
+            if (ProductList.Count == 0)
+            {
+                throw new InvalidOperationException("Empty list");
+            }
 
-        //}
+            List<Product> allProducts = new List<Product>();
+                
+            foreach (Product product in ProductList)
+            {
+                if (product.Price >= minimumprice)
+                {
+                    allProducts.Add(product);
+                }
+            }
+
+            return allProducts;
+        }
 
         public void SortProductByPrice()
         {

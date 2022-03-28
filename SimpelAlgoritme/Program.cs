@@ -18,7 +18,16 @@ namespace SimpelAlgoritme
 
             Console.WriteLine("maximum price of order: " + order.GiveMaximumPrice());
             Console.WriteLine("average price of order: " + order.GiveAveragePrice());
-            //order.GetAllProducts();
+
+            double minimumPrice = 1.25;
+            Console.WriteLine("All products with mimimumprice of: " + minimumPrice);
+            List<Product> allProducts = new List<Product>();
+            allProducts = order.GetAllProducts(minimumPrice);
+            foreach (Product p in allProducts)
+            {
+                Console.WriteLine(p.Name + " ");
+            }
+
             order.SortProductByPrice();
             Console.Read();
         }
