@@ -8,26 +8,24 @@ namespace Circustrein
 {
     internal class Animal
     {
-        enum Type
-        {
-            Carnivore,
-            Herbivore
-        }
+        private string name;
+        private Program.Type type;
+        private Program.Size size;
 
-        enum Size
+        public Animal(string name, Program.Type type, Program.Size size)
         {
-            Small = 1,
-            Medium = 3,
-            Large = 5
-        }
-
-        private Type type;
-        private Size size;
-
-        public Animal(Type type, Size size)
-        {
+            this.name = name;
             this.type = type;
             this.size = size;
+        }
+
+        public string Name { get => name;}
+        public Program.Type Type { get => type; }
+        public Program.Size Size { get => size; }
+
+        public override string ToString()
+        {
+            return $"Name: {Name}, Type: {Type}, Size: {Size}";
         }
     }
 }

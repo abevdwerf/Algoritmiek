@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Circustrein
 {
-    internal class Carriage
+    internal class Train
     {
-        private List<Animal> animals;
-
-        public Carriage()
+        public Train(List<Wagon> wagonList)
         {
-
+            this.WagonList = wagonList;
         }
+
+        public List<Wagon> WagonList { get; set; }
     }
 }
