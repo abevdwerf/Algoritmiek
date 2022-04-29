@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpelAlgoritme
 {
-    internal class Product
+    public class Product
     {
         public string Name { get; private set; }
         public Double Price { get; private set; }

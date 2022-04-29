@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpelAlgoritme
 {
-    internal class Order
+    public class Order
     {
         public Order(List<Product> productList)
         {
@@ -79,7 +79,6 @@ namespace SimpelAlgoritme
             }
 
             List<double> priceList = new List<double>();
-
 
             foreach (Product product in ProductList)
             {
