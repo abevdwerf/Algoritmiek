@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logic.Enums;
+using Type = Logic.Enums.Type;
 
 namespace Circustrein
 {
-    internal class Animal
+    public class Animal
     {
         private string name;
-        private Program.Type type;
-        private Program.Size size;
+        private Type type;
+        private Size size;
 
-        public Animal(string name, Program.Type type, Program.Size size)
+        public Animal(string name, Type type, Size size)
         {
             this.name = name;
             this.type = type;
@@ -20,8 +22,8 @@ namespace Circustrein
         }
 
         public string Name { get => name;}
-        public Program.Type Type { get => type; }
-        public Program.Size Size { get => size; }
+        public Type Type { get => type; }
+        public Size Size { get => size; }
 
         public override string ToString()
         {

@@ -1,22 +1,11 @@
 ﻿using System;
+using Logic.Enums;
+using Type = Logic.Enums.Type;
 
 namespace Circustrein
 {
-    internal class Program
+    public class Program
     {
-        public enum Type
-        {
-            Carnivore = 0,
-            Herbivore = 1
-        }
-
-        public enum Size
-        {
-            Small = 1,
-            Medium = 3,
-            Large = 5
-        }
-
         static void Main(string[] args)
         {
             List<Animal> animals = new List<Animal>();
@@ -59,8 +48,9 @@ namespace Circustrein
                 foreach (Wagon wagon in wagons)
                 {
                     //all medium and Large herbivores add to wagons
-                    if (wagon.AddAnimal(herbivoreAnimals[i]))
+                    if (wagon.canAddAnimal(herbivoreAnimals[i]))
                     {
+                        wagon.AddAnimal(herbivoreAnimals[i]);
                         herbivoreAnimals.Remove(herbivoreAnimals[i]);
                         break;
                     }       
@@ -77,7 +67,7 @@ namespace Circustrein
 
                 foreach (Animal herbivoreAnimal in herbivoreAnimals)
                 {
-                    if (!wagon.AddAnimal(herbivoreAnimal))
+                    if (!wagon.canAddAnimal(herbivoreAnimal))
                     {
                         //wagon reached max capacity
                         wagons.Add(wagon);
