@@ -22,26 +22,15 @@ namespace Circustrein
             List<Animal> animals = new List<Animal>();
             List<Wagon> wagons = new List<Wagon>();
 
-            //create animals
-            Animal tiger = new Animal("tiger", Type.Carnivore, Size.Medium);
-            Animal lion = new Animal("lion", Type.Carnivore, Size.Small);
-            Animal owl = new Animal("owl", Type.Carnivore, Size.Small);
-            Animal snake = new Animal("snake", Type.Carnivore, Size.Small);
-
-            Animal monkey = new Animal("monkey", Type.Herbivore, Size.Small);
-            Animal cow = new Animal("cow", Type.Herbivore, Size.Large);
-            Animal giraffe = new Animal("giraffe", Type.Herbivore, Size.Medium);
-            Animal goat = new Animal("goat", Type.Herbivore, Size.Medium)
-
             //add animals to the list 
-            animals.Add(tiger);
-            animals.Add(lion);
-            animals.Add(owl);
-            animals.Add(snake);
-            animals.Add(monkey);
-            animals.Add(cow);
-            animals.Add(giraffe);
-            animals.Add(goat);
+            animals.Add(new Animal("tiger", Type.Carnivore, Size.Medium));
+            animals.Add(new Animal("lion", Type.Carnivore, Size.Small));
+            animals.Add(new Animal("owl", Type.Carnivore, Size.Small));
+            animals.Add(new Animal("snake", Type.Carnivore, Size.Small));
+            animals.Add(new Animal("monkey", Type.Herbivore, Size.Small));
+            animals.Add(new Animal("cow", Type.Herbivore, Size.Large));
+            animals.Add(new Animal("giraffe", Type.Herbivore, Size.Medium));
+            animals.Add(new Animal("goat", Type.Herbivore, Size.Medium));
 
             //show all animals;
             Console.WriteLine("all animals:");
