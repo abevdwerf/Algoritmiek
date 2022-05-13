@@ -10,24 +10,21 @@ namespace Circustrein
 {
     public class Animal
     {
-        private string name;
         private Type type;
         private Size size;
 
-        public Animal(string name, Type type, Size size)
+        public Animal(Type type, Size size)
         {
-            this.name = name;
             this.type = type;
             this.size = size;
         }
 
-        public string Name { get => name;}
         public Type Type { get => type; }
         public Size Size { get => size; }
 
         public override string ToString()
         {
-            return $"Name: {Name}, Type: {Type}, Size: {Size}";
+            return $"Type: {Type}, Size: {Size}";
         }
     }
 }

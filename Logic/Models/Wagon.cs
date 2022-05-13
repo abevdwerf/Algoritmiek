@@ -18,20 +18,19 @@ namespace Circustrein
         public List<Animal> AnimalList { get; set; }
         public int Capacity { get;  private set; }
 
-        public bool canAddAnimal(Animal animal)
+        public bool CanAddAnimal(Animal animal)
         {
-            int result = (int)animal.Size + Capacity;
+            int capacityWithNewAnimal = (int)animal.Size + Capacity;
             bool canAddAnimal = false;
 
             //check capacity of the wagon
-            if (this.Capacity < maxCapacity && result <= maxCapacity)
+            if (this.Capacity < maxCapacity && capacityWithNewAnimal <= maxCapacity)
             {
                 if (animal.Type == Logic.Enums.Type.Carnivore)
                 {
                     //add carnivore only when AnimalList is empty
                     if (this.AnimalList.Count == 0)
                     {
-                        Capacity += (int)animal.Size;
                         canAddAnimal = true;
                     }
                 }
@@ -42,30 +41,32 @@ namespace Circustrein
                     {
                         if (AnimalList[0].Size < animal.Size)
                         {
-                            Capacity += (int)animal.Size;
                             canAddAnimal = true;
                         }
                     }
                     else
                     {
-                        Capacity += (int)animal.Size;
                         canAddAnimal = true;
                     }
                 }
                 //add herbivore to empty animallist
                 else
                 {
-                    Capacity += (int)animal.Size;
                     canAddAnimal = true;
                 }
             }
             return canAddAnimal;
         }
 
-
         public void AddAnimal(Animal animal)
         {
-           AnimalList.Add(animal);
+            if (!CanAddAnimal(animal))
+            {
+                throw new Exception();
+            }
+
+            AnimalList.Add(animal);
+            Capacity += (int)animal.Size;
         }
     }
 }
