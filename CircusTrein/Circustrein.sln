@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Circustrein", "Circustrein\Circustrein.csproj", "{396D83F3-CC7C-49BD-AFA6-619A6167C6E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircusTrein.Tests", "CircusTrein.Tests\CircusTrein.Tests.csproj", "{3FA06B8B-068F-4EEC-8EFA-7DCA343D85FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{396D83F3-CC7C-49BD-AFA6-619A6167C6E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{396D83F3-CC7C-49BD-AFA6-619A6167C6E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{396D83F3-CC7C-49BD-AFA6-619A6167C6E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FA06B8B-068F-4EEC-8EFA-7DCA343D85FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FA06B8B-068F-4EEC-8EFA-7DCA343D85FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FA06B8B-068F-4EEC-8EFA-7DCA343D85FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FA06B8B-068F-4EEC-8EFA-7DCA343D85FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
