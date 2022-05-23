@@ -1,6 +1,6 @@
-﻿using System;
-using Logic.Enums;
+﻿using Logic.Enums;
 using Type = Logic.Enums.Type;
+using Logic.Models;
 
 namespace Circustrein
 {
@@ -8,7 +8,8 @@ namespace Circustrein
     {
         static void Main(string[] args)
         {
-            Train train = new Train();
+            Circus circus = new Circus();
+            Schedule schedule = new Schedule();
             string userInput = "";
             int count = 1;
 
@@ -21,32 +22,32 @@ namespace Circustrein
                 {
                     case "hs":
                         {
-                            train.AddAnimal(new Animal(Type.Herbivore, Size.Small));
+                            circus.AddAnimal(new Animal(Type.Herbivore, Size.Small));
                             break;
                         }
                     case "hm":
                         {
-                            train.AddAnimal(new Animal(Type.Herbivore, Size.Medium));
+                            circus.AddAnimal(new Animal(Type.Herbivore, Size.Medium));
                             break;
                         }
                     case "hl":
                         {
-                            train.AddAnimal(new Animal(Type.Herbivore, Size.Large));
+                            circus.AddAnimal(new Animal(Type.Herbivore, Size.Large));
                             break;
                         }
                     case "cs":
                         {
-                            train.AddAnimal(new Animal(Type.Carnivore, Size.Small));
+                            circus.AddAnimal(new Animal(Type.Carnivore, Size.Small));
                             break;
                         }
                     case "cm":
                         {
-                            train.AddAnimal(new Animal(Type.Carnivore, Size.Medium));
+                            circus.AddAnimal(new Animal(Type.Carnivore, Size.Medium));
                             break;
                         }
                     case "cl":
                         {
-                            train.AddAnimal(new Animal(Type.Carnivore, Size.Large));
+                            circus.AddAnimal(new Animal(Type.Carnivore, Size.Large));
                             break;
                         }
                     default:
@@ -60,7 +61,7 @@ namespace Circustrein
             }
 
             //show all wagons
-            foreach (Wagon wagon in train.GetAllWagons())
+            foreach (Wagon wagon in schedule.GetSortedWagons(circus.Animals))
             {
                 Console.WriteLine("Wagon " + count + ":");
                 Console.WriteLine("\t Capacity: " + wagon.Capacity);

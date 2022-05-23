@@ -1,99 +1,49 @@
-﻿using Logic.Enums;
-using Type = Logic.Enums.Type;
-
-namespace Circustrein
+﻿namespace Logic.Models
 {
     public class Train
     {
-        List<Animal> carnivoreAnimals;
-        List<Animal> herbivoreAnimals;
-        List<Animal> smallHerbivoreAnimals;
-
         public Train()
         {
-            this.Animals = new List<Animal>();
             this.Wagons = new List<Wagon>();
         }
 
-        public List<Animal> Animals { get; set; }
         public List<Wagon> Wagons { get; set; }
 
-        public void AddAnimal(Animal animal)
+        private void FillWagons(IEnumerable<Animal> animals)
         {
-            Animals.Add(animal);
-            //add animal to wagon
-        }
-
-        private void SortAnimals()
-        {
-            //save all carnivore animals in to a list
-            carnivoreAnimals = Animals.Where(a => a.Type == Type.Carnivore).OrderBy(a => a.Size).ToList();
-            //save all herbivore animals with the size medium or large in to a list
-            herbivoreAnimals = Animals.Where(a => a.Type == Type.Herbivore).Where(a => a.Size == Size.Medium || a.Size == Size.Large).OrderByDescending(a => a.Size).ToList();
-            //save all herbivore animals with the size small in to a list
-            smallHerbivoreAnimals = Animals.Where(a => a.Type == Type.Herbivore).Where(a => a.Size == Size.Small).ToList();
-        }
-
-        private void FillWagons()
-        {
-            SortAnimals();
-
-            //add each carnivore animal to a new wagon
-            foreach (Animal carnivoreAnimal in carnivoreAnimals)
+            foreach (Animal animal in animals)
             {
-                Wagon wagon = new Wagon();
-                wagon.AddAnimal(carnivoreAnimal);
-                Wagons.Add(wagon);
-            }
-
-            for (int i = herbivoreAnimals.Count - 1; i >= 0; i--)
-            {
-                foreach (Wagon wagon in Wagons)
+                if (Wagons.Count == 0)
                 {
-                    //all medium and Large herbivores add to wagons
-                    if (wagon.CanAddAnimal(herbivoreAnimals[i]))
-                    {
-                        wagon.AddAnimal(herbivoreAnimals[i]);
-                        herbivoreAnimals.Remove(herbivoreAnimals[i]);
-                        break;
-                    }
+                    Wagon firstWagon = new Wagon();
+                    AddWagon(firstWagon);
                 }
-            }
 
-            //merge 2 lists together
-            herbivoreAnimals.AddRange(smallHerbivoreAnimals);
-
-            //if there are herbivore animals left then add them to a new wagon
-            if (herbivoreAnimals.Count > 0)
-            {
-                Wagon wagon = new Wagon();
-
-                foreach (Animal herbivoreAnimal in herbivoreAnimals)
+                foreach (Wagon wagon in Wagons.ToList())
                 {
-                    if (wagon.CanAddAnimal(herbivoreAnimal))
+                    if (wagon.CanAddAnimal(animal))
                     {
-                        wagon.AddAnimal(herbivoreAnimal);
+                        wagon.AddAnimal(animal);
+                        break;
                     }
                     else
                     {
-                        //add existing wagon to list
-                        Wagons.Add(wagon);
-
-                        //create new wagon
                         Wagon newWagon = new Wagon();
-                        wagon = newWagon;
-
-                        wagon.AddAnimal(herbivoreAnimal);
+                        newWagon.AddAnimal(animal);
+                        AddWagon(newWagon);
                     }
                 }
-                //add wagon to wagons list
-                Wagons.Add(wagon);
             }
         }
 
-        public List<Wagon> GetAllWagons()
+        private void AddWagon(Wagon wagon)
         {
-            FillWagons();
+            Wagons.Add(wagon);
+        }
+
+        public List<Wagon> GetAllWagons(IEnumerable<Animal> animals)
+        {
+            FillWagons(animals);
             return Wagons;
         }
     }

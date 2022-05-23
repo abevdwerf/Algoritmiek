@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Logic.Enums;
+﻿using Logic.Enums;
 using Type = Logic.Enums.Type;
 
-namespace Circustrein
+namespace Logic.Models
 {
     public class Animal
     {

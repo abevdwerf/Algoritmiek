@@ -1,61 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Type = Logic.Enums.Type; 
 
-namespace Circustrein
+namespace Logic.Models
 {
     public class Wagon
     {
-        private const int maxCapacity = 10;
-
         public Wagon()
         {
             AnimalList = new List<Animal>();
         }
 
         public List<Animal> AnimalList { get; set; }
-        public int Capacity { get;  private set; }
+        public int Capacity { get; private set; } = 10;
 
-        public bool CanAddAnimal(Animal animal)
+        public bool CanAddAnimal(Animal newAnimal)
         {
-            int capacityWithNewAnimal = (int)animal.Size + Capacity;
-            bool canAddAnimal = false;
+            int capacityWithNewAnimal = this.Capacity - (int)newAnimal.Size;
 
             //check capacity of the wagon
-            if (this.Capacity < maxCapacity && capacityWithNewAnimal <= maxCapacity)
+            if (capacityWithNewAnimal >= 0)
             {
-                if (animal.Type == Logic.Enums.Type.Carnivore)
+                if (AnimalList.Count > 0)
                 {
-                    //add carnivore only when AnimalList is empty
-                    if (this.AnimalList.Count == 0)
+                    foreach (Animal animal in AnimalList)
                     {
-                        canAddAnimal = true;
-                    }
-                }
-                else if (AnimalList.Count > 0)
-                {
-                    // add herbivore to animallist with carnivore
-                    if (AnimalList[0].Type == Logic.Enums.Type.Carnivore)
-                    {
-                        if (AnimalList[0].Size < animal.Size)
+                        //return false when new animal size is lower or equal then existing carnivore animal
+                        //return false when new animal size is bigger or equal then existing animal where the newanimal is type of carnivore
+                        if (newAnimal.Size <= animal.Size && animal.Type == Type.Carnivore || newAnimal.Size >= animal.Size && newAnimal.Type == Type.Carnivore)
                         {
-                            canAddAnimal = true;
+                            return false;
                         }
                     }
-                    else
-                    {
-                        canAddAnimal = true;
-                    }
                 }
-                //add herbivore to empty animallist
-                else
-                {
-                    canAddAnimal = true;
-                }
+                return true;
+                
             }
-            return canAddAnimal;
+            return false;
         }
 
         public void AddAnimal(Animal animal)
@@ -66,7 +45,7 @@ namespace Circustrein
             }
 
             AnimalList.Add(animal);
-            Capacity += (int)animal.Size;
+            Capacity -= (int)animal.Size;
         }
     }
 }
