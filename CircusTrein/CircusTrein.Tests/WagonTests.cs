@@ -29,9 +29,9 @@ namespace CircusTrein.Tests
             // Arrange
             Wagon wagon = new Wagon();
             Animal animal = new Animal(Type.Herbivore, Size.Medium);
+            wagon.AddAnimal(animal);
 
             // Act
-            wagon.AddAnimal(animal);
             bool result = wagon.CanAddAnimal(newAnimal);
 
             // Assert  
@@ -52,9 +52,9 @@ namespace CircusTrein.Tests
             Wagon wagon = new Wagon();
             Animal animal = new Animal(Type.Carnivore, Size.Small);
             Animal secondAnimal = new Animal(Type.Carnivore, Size.Large);
+            wagon.AddAnimal(animal);
 
             // Act
-            wagon.AddAnimal(animal);
             bool result = wagon.CanAddAnimal(secondAnimal);
 
             // Assert  
@@ -67,10 +67,10 @@ namespace CircusTrein.Tests
             // Arrange
             Wagon wagon = new Wagon();
             Animal animal = new Animal(Type.Herbivore, Size.Large);
-
-            // Act
             wagon.AddAnimal(animal); // Capacity of 5
             wagon.AddAnimal(animal); // Capacity of 10
+
+            // Act
             bool result = wagon.CanAddAnimal(animal);
 
             // Assert  

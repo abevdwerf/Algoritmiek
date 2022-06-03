@@ -15,5 +15,11 @@
         {
             animals.Add(animal);
         }
+
+        public IEnumerable<Wagon> GetSortedWagons()
+        {
+            Train train = new Train();
+            return train.GetAllWagons(Animals);
+        }
     }
 }

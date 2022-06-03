@@ -23,18 +23,18 @@ namespace Logic.Models
                 {
                     foreach (Animal animal in AnimalList)
                     {
-                        //return false when new animal size is lower or equal then existing carnivore animal
-                        //return false when new animal size is bigger or equal then existing animal where the newanimal is type of carnivore
-                        if (newAnimal.Size <= animal.Size && animal.Type == Type.Carnivore || newAnimal.Size >= animal.Size && newAnimal.Type == Type.Carnivore)
-                        {
-                            return false;
-                        }
+                        return CanTheseAnimalsBeTogetherInThisWagon(newAnimal, animal);
                     }
                 }
                 return true;
                 
             }
             return false;
+        }
+
+        private static bool CanTheseAnimalsBeTogetherInThisWagon(Animal newAnimal, Animal animal)
+        {
+            return newAnimal.Size <= animal.Size && animal.Type == Type.Carnivore || newAnimal.Size >= animal.Size && newAnimal.Type == Type.Carnivore;
         }
 
         public void AddAnimal(Animal animal)

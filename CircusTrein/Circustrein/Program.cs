@@ -9,7 +9,6 @@ namespace Circustrein
         static void Main(string[] args)
         {
             Circus circus = new Circus();
-            Schedule schedule = new Schedule();
             string userInput = "";
             int count = 1;
 
@@ -61,7 +60,7 @@ namespace Circustrein
             }
 
             //show all wagons
-            foreach (Wagon wagon in schedule.GetSortedWagons(circus.Animals))
+            foreach (Wagon wagon in circus.GetSortedWagons())
             {
                 Console.WriteLine("Wagon " + count + ":");
                 Console.WriteLine("\t Capacity: " + wagon.Capacity);
